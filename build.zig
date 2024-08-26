@@ -19,11 +19,20 @@ pub fn build(b: *std.Build) void {
     // zacc_reader
     const zacc_reader = b.addStaticLibrary(.{
         .name = "zacc_reader",
-        .root_source_file = b.path("src/types.zig"),
+        .root_source_file = b.path("src/reader.zig"),
         .target = target,
         .optimize = optimize,
     });
     b.installArtifact(zacc_reader);
+
+    // zacc_utils
+    const zacc_utils = b.addStaticLibrary(.{
+        .name = "zacc_utils",
+        .root_source_file = b.path("src/utils.zig"),
+        .target = target,
+        .optimize = optimize,
+    });
+    b.installArtifact(zacc_utils);
 
     // Creates a step for unit testing. This only builds the test executable
     // but does not run it.

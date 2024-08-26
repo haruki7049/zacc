@@ -1,0 +1,1 @@
+const linesize = 100;
